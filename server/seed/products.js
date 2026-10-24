@@ -1,0 +1,107 @@
+// Starting catalogue, taken from glowglossary.com (23 Oct 2026). Prices are in paise.
+// Images come from seed/images/<slug>/, in file-name order (the first is the cover).
+export const seedProducts = [
+  {
+    slug: 'gg-matcha-green',
+    name: 'GG Matcha Green',
+    tagline: 'Organic ceremonial grade A, in our new botanical tin',
+    description:
+      'Organic ceremonial grade A. Stone-ground from first-harvest leaves picked at family farms in Shizuoka, Japan. USDA + JAS certified.\n\nNo bitterness, no 4pm crash. Just one ingredient, the whole leaf, and yes, it’s that green.',
+    price: 105800,
+    size: '30 g tin',
+    category: 'matcha',
+    badges: ['New', 'USDA + JAS Organic'],
+    isFeatured: true,
+    sortOrder: 1,
+    alt: 'GG Matcha Green tin',
+  },
+  {
+    slug: 'gg-matcha',
+    name: 'GG Matcha',
+    tagline: 'Our original 30 g pouch, ceremonial grade A',
+    description:
+      'Organic ceremonial grade A. Stone-ground from first-harvest leaves picked at family farms in Shizuoka, Japan. USDA + JAS certified.\n\nAbout 15 servings of 2 g each. Best within 24 months of packaging: keep the pack tightly sealed, cool, dry and out of direct sunlight, and use a clean, dry spoon.',
+    price: 105800,
+    size: '30 g pouch',
+    category: 'matcha',
+    badges: ['The original'],
+    isFeatured: true,
+    sortOrder: 2,
+    alt: 'GG Matcha 30 g pouch',
+  },
+  {
+    slug: 'matcha-ritual-kit',
+    name: 'The Matcha Ritual Kit',
+    tagline: 'Matcha, bamboo whisk, chashaku and chawan',
+    description:
+      'Everything you need for the ritual: Glow Glossary organic ceremonial grade A stone-ground matcha, a bamboo whisk (chasen), a bamboo spoon (chashaku) and a matcha bowl (chawan).\n\nFreshly ground and ethically sourced from Shizuoka, Japan. Single-origin and hand-picked for an exceptionally smooth flavour that blends easily with milk or water.',
+    price: 225800,
+    size: '',
+    category: 'kits',
+    badges: ['Gift ready'],
+    isFeatured: true,
+    sortOrder: 3,
+    alt: 'The Matcha Ritual Kit',
+  },
+  {
+    slug: 'matcha-collagen',
+    name: 'Matcha Collagen',
+    tagline: 'India’s first Matcha Collagen, with Wellbeing Nutrition',
+    description:
+      'Combines 8 g of marine collagen peptides (under 1000 Daltons) with 1.8 g of ceremonial grade matcha, enriched with acerola cherry vitamin C and L-theanine.\n\nMade with Wellbeing Nutrition for your glow-from-within routine, with clean, steady energy and no jitters.',
+    price: 135800,
+    compareAt: 169900,
+    size: '',
+    category: 'collagen',
+    badges: ['Sale'],
+    isFeatured: true,
+    sortOrder: 4,
+    alt: 'Matcha Collagen box and stick pack',
+  },
+  {
+    slug: 'collagen-ritual-kit',
+    name: 'The Collagen Ritual Kit',
+    tagline: 'Matcha Collagen with a bamboo whisk and spoon',
+    description:
+      'A limited-edition set: the Glow Glossary x Wellbeing Nutrition Matcha Collagen with traditional matcha tools, a bamboo whisk and spoon.\n\nWhisk it, sip it, glow with it. Because skincare starts in your cup.',
+    price: 172600,
+    compareAt: 215800,
+    size: '',
+    category: 'kits',
+    badges: ['Limited edition'],
+    isFeatured: false,
+    sortOrder: 5,
+    alt: 'The Collagen Ritual Kit',
+  },
+  {
+    slug: 'matcha-duo',
+    name: 'The Matcha Duo',
+    tagline: 'Two pouches of GG Matcha',
+    description:
+      'Two packs of our organic ceremonial grade A matcha, sourced from Shizuoka, Japan and certified JAS organic.\n\nHand-picked for an exceptionally smooth flavour and texture that blends easily with milk or water. Stock up, or share one.',
+    price: 169500,
+    compareAt: 211600,
+    size: 'Pack of 2',
+    category: 'matcha',
+    badges: ['Value pack'],
+    isFeatured: false,
+    sortOrder: 6,
+    alt: 'Two GG Matcha pouches',
+  },
+  {
+    slug: 'glow-on-the-go',
+    name: 'Glow on the Go',
+    tagline: 'A 15 g pack for first-timers and travel',
+    description:
+      'Discovering matcha for the first time, or need a portable dose for travel? This 15 g pack of GG organic ceremonial grade A, stone-ground matcha is your go-to.\n\nPerfect for matcha beginners, travel-friendly rituals, gifting and sampling.',
+    price: 57400,
+    size: '15 g pack',
+    category: 'matcha',
+    badges: ['Travel size'],
+    isFeatured: false,
+    sortOrder: 7,
+    alt: 'Glow on the Go 15 g matcha pack',
+  },
+];
+
+export const seedPromos = [{ code: 'WELCOME10', percentOff: 10, active: true }];
