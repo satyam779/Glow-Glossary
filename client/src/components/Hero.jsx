@@ -1,11 +1,9 @@
-import { Link } from 'react-router';
-import { HERO, SHOP } from '../content';
-import { Chevron } from './Icons';
+import { HERO } from '../content';
 import LeafShadow from './LeafShadow';
 import TinSlot from './TinSlot';
 
 export default function Hero() {
-  const { lines, accent, blurb, cta } = HERO;
+  const { lines, accent } = HERO;
   return (
     <section className="hero" id="top" data-theme="light">
       <div className="hero__bokeh" aria-hidden="true">
@@ -28,16 +26,6 @@ export default function Hero() {
       </h1>
 
       <TinSlot className="tin-slot--hero" yaw={-22} tilt={16} lean={-9} powder={1} fallback="/images/tin-powder.webp" />
-
-      <div className="hero__side">
-        <p>{blurb}</p>
-        <Link className="join" to={`/shop/${SHOP.featuredSlug}`}>
-          <i>
-            <Chevron />
-          </i>
-          {cta}
-        </Link>
-      </div>
     </section>
   );
 }

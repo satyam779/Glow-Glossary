@@ -426,7 +426,6 @@ body.on-dark .nav__cta:hover {
    3D canvas (z 20) while photos stay below it. The tin floats in front of the photos and
    behind the words, and the powder never covers what you're reading. */
 body .hero h1,
-body .hero__side,
 body .foot__legal {
   z-index: 21;
 }
@@ -568,37 +567,6 @@ body .foot__info {
   height: clamp(220px, 34vh, 400px);
 }
 
-.hero__side {
-  position: absolute;
-  z-index: 2;
-  opacity: 0;
-}
-.loaded .hero__side {
-  animation: fade 1s 0.85s ease forwards;
-}
-@keyframes fade {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-.hero__side {
-  right: clamp(24px, 6.5vw, 120px);
-  top: 58vh;
-  width: min(270px, 80vw);
-}
-.hero__side p {
-  font-size: clamp(15px, 1.35vw, 19px);
-  line-height: 1.38;
-  color: var(--muted);
-}
-.hero__side .join {
-  margin-top: 34px;
-}
 @keyframes marquee {
   to {
     transform: translateX(-50%);
@@ -1472,17 +1440,6 @@ body .foot__info {
   .hero .tin-slot--hero {
     top: 52vh;
     height: 28vh;
-  }
-  .hero__side {
-    top: auto;
-    bottom: 11vh;
-    left: 18px;
-    right: 18px;
-    width: auto;
-    text-align: center;
-  }
-  .hero__side .join {
-    margin-top: 18px;
   }
   .hero .leaf-shadow {
     width: 120vw;

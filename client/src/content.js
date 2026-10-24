@@ -27,8 +27,6 @@ export const NAV = {
 export const HERO = {
   lines: ['Shade-grown calm,', 'stone-ground'],
   accent: 'glow.',
-  blurb: `Organic ceremonial grade A matcha from family farms in ${ORIGIN.region}, Japan. No bitterness, no 4pm crash.`,
-  cta: 'Shop the tin',
 };
 
 export const PRESS = {
