@@ -17,7 +17,6 @@
   --pad: clamp(18px, 3.2vw, 46px);
   --sans: 'Poppins', system-ui, sans-serif;
   --serif: 'Instrument Serif', Georgia, serif;
-  --jp: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
   --ease-out: cubic-bezier(0.2, 0.8, 0.15, 1);
 }
 
@@ -75,7 +74,7 @@ em {
 }
 
 /* ==========================================================================
-   Chrome: loader, nav, badge, grain, canvas
+   Chrome: loader, nav, grain, canvas
    ========================================================================== */
 .loader {
   position: fixed;
@@ -222,54 +221,13 @@ body.scrolled.on-dark .nav {
   color: var(--paper);
   border-color: var(--ink);
 }
-.badge {
-  transition: color 0.5s ease, opacity 0.5s ease;
-}
-body:not(.scrolled) .badge {
-  opacity: 0;
-}
-body.on-dark .nav,
-body.on-dark .badge {
+body.on-dark .nav {
   color: #f1f5e4;
 }
 body.on-dark .nav__cta:hover {
   background: #f1f5e4;
   color: var(--forest);
   border-color: #f1f5e4;
-}
-
-.badge {
-  position: fixed;
-  z-index: 30;
-  right: var(--pad);
-  bottom: 22px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 500;
-  color: #2c3a22;
-  pointer-events: none;
-  padding: 6px 12px 6px 8px;
-  border-radius: 999px;
-  background: rgba(242, 241, 230, 0.72);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-body.on-dark .badge {
-  background: rgba(24, 38, 15, 0.6);
-}
-.badge svg {
-  width: 18px;
-  height: 18px;
-  color: var(--matcha);
-}
-body.on-dark .badge svg {
-  color: var(--matcha-bright);
-}
-.badge b {
-  font-family: var(--jp);
-  font-weight: 700;
 }
 
 .grain {
@@ -342,37 +300,15 @@ body.on-dark .badge svg {
 .title .line {
   display: block;
 }
+.num + .title {
+  margin-top: clamp(22px, 2.6vw, 38px);
+}
 .copy {
   margin-top: 22px;
   font-size: clamp(14px, 1.05vw, 16.5px);
   line-height: 1.65;
   color: var(--muted);
   max-width: 440px;
-}
-
-.entry {
-  display: inline-flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 4px 12px;
-  margin: 26px 0 18px;
-  padding-top: 12px;
-  border-top: 1px solid currentColor;
-  border-top-color: var(--line);
-  font-size: 13px;
-  color: var(--muted);
-}
-.entry__jp {
-  font-family: var(--jp);
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--ink);
-}
-.entry__term {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 23px;
-  color: var(--ink);
 }
 
 .join {
@@ -490,9 +426,7 @@ body.on-dark .badge svg {
    3D canvas (z 20) while photos stay below it. The tin floats in front of the photos and
    behind the words, and the powder never covers what you're reading. */
 body .hero h1,
-body .hero__entry,
 body .hero__side,
-body .ticker,
 body .foot__legal {
   z-index: 21;
 }
@@ -634,18 +568,13 @@ body .foot__info {
   height: clamp(220px, 34vh, 400px);
 }
 
-.hero__entry,
 .hero__side {
   position: absolute;
   z-index: 2;
   opacity: 0;
 }
-.loaded .hero__entry,
 .loaded .hero__side {
-  animation: fade 1s 0.7s ease forwards;
-}
-.loaded .hero__side {
-  animation-delay: 0.85s;
+  animation: fade 1s 0.85s ease forwards;
 }
 @keyframes fade {
   from {
@@ -656,26 +585,6 @@ body .foot__info {
     opacity: 1;
     transform: none;
   }
-}
-.hero__entry {
-  left: var(--pad);
-  bottom: 14vh;
-  width: min(300px, 80vw);
-}
-.hero__entry .entry {
-  margin: 0 0 10px;
-}
-.hero__entry dfn {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 34px;
-  color: var(--ink);
-  letter-spacing: -0.01em;
-}
-.hero__entry p {
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--muted);
 }
 .hero__side {
   right: clamp(24px, 6.5vw, 120px);
@@ -689,43 +598,6 @@ body .foot__info {
 }
 .hero__side .join {
   margin-top: 34px;
-}
-.ticker {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  overflow: hidden;
-  padding: 14px 0;
-  border-top: 1px solid var(--line);
-  background: rgba(255, 255, 242, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.ticker__track {
-  display: flex;
-  width: max-content;
-  animation: marquee 36s linear infinite;
-}
-.ticker__group,
-.ticker__group > span {
-  display: inline-flex;
-  align-items: center;
-}
-.ticker__group > span {
-  gap: 30px;
-  padding-right: 30px;
-}
-.ticker__dot {
-  width: 14px;
-  height: 14px;
-  color: var(--matcha);
 }
 @keyframes marquee {
   to {
@@ -801,34 +673,12 @@ body .foot__info {
 .craft .num {
   color: var(--num-dark);
 }
-.craft .entry {
-  color: rgba(241, 245, 228, 0.7);
-  border-top-color: rgba(241, 245, 228, 0.22);
-}
-.craft .entry__jp,
-.craft .entry__term {
-  color: #f1f5e4;
-}
 .craft .copy {
   color: rgba(236, 242, 220, 0.78);
 }
 .craft__text {
   position: relative;
   z-index: 2;
-}
-.craft__kanji {
-  position: absolute;
-  right: -2vw;
-  top: 50%;
-  translate: 0 -50%;
-  writing-mode: vertical-rl;
-  font-family: var(--jp);
-  font-weight: 700;
-  font-size: clamp(200px, 30vh, 380px);
-  line-height: 1;
-  color: rgba(170, 210, 100, 0.06);
-  pointer-events: none;
-  user-select: none;
 }
 .notes {
   display: flex;
@@ -1533,7 +1383,7 @@ body .foot__info {
 .foot__info {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr auto;
   align-items: end;
   gap: 24px;
   text-align: left;
@@ -1554,19 +1404,6 @@ body .foot__info {
 }
 .foot__brand a:hover {
   color: var(--matcha);
-}
-.foot__sign {
-  text-align: center;
-  font-size: 12.5px;
-  color: var(--muted);
-}
-.foot__sign b {
-  display: block;
-  font-family: var(--jp);
-  font-size: 22px;
-  color: var(--ink);
-  letter-spacing: 0.12em;
-  margin-bottom: 4px;
 }
 .foot__cols {
   justify-self: end;
@@ -1626,10 +1463,6 @@ body .foot__info {
     padding: 8px 16px;
     font-size: 14px;
   }
-  .badge {
-    display: none;
-  }
-
   .hero h1 {
     top: 13vh;
     padding: 0 14px;
@@ -1639,9 +1472,6 @@ body .foot__info {
   .hero .tin-slot--hero {
     top: 52vh;
     height: 28vh;
-  }
-  .hero__entry {
-    display: none;
   }
   .hero__side {
     top: auto;
@@ -1653,10 +1483,6 @@ body .foot__info {
   }
   .hero__side .join {
     margin-top: 18px;
-  }
-  .ticker {
-    font-size: 11px;
-    padding: 11px 0;
   }
   .hero .leaf-shadow {
     width: 120vw;
@@ -1685,9 +1511,6 @@ body .foot__info {
   .num {
     font-size: 84px;
   }
-  .entry {
-    margin: 18px 0 12px;
-  }
   /* On phones the tin parks in the empty corner beside each section's big number. */
   .story .tin-slot,
   .craft .tin-slot,
@@ -1699,8 +1522,12 @@ body .foot__info {
     right: 6vw;
     left: auto;
     bottom: auto;
-    height: 17vh;
+    height: 15vh;
     translate: none;
+  }
+  /* keep headings clear of the tin parked beside the number */
+  .num + .title {
+    margin-top: max(26px, calc(12vh - 56px));
   }
   .foot .tin-slot {
     height: 26vh;
@@ -1712,10 +1539,6 @@ body .foot__info {
   }
   .craft__photo {
     aspect-ratio: 4 / 4.4;
-  }
-  .craft__kanji {
-    font-size: 46vw;
-    right: -8vw;
   }
   .craft .tin-slot {
     translate: none;

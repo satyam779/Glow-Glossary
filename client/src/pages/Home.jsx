@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Badge, Loader } from '../components/Chrome';
+import { Loader } from '../components/Chrome';
 import Hero from '../components/Hero';
 import Press from '../components/Press';
 import Story from '../components/Story';
@@ -58,7 +58,6 @@ export default function Home() {
         <Community />
       </main>
       <Footer />
-      <Badge />
     </>
   );
 }

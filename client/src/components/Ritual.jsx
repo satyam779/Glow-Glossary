@@ -1,19 +1,17 @@
 import { Link } from 'react-router';
 import { RITUAL } from '../content';
-import Entry from './Entry';
 import { ArrowRight, StepIcon } from './Icons';
 import LeafShadow from './LeafShadow';
 import TinSlot from './TinSlot';
 
 export default function Ritual() {
-  const { num, entry, title, copy, steps } = RITUAL;
+  const { num, title, copy, steps } = RITUAL;
   return (
     <section className="ritual" id="ritual" data-theme="light">
       <LeafShadow flip />
 
       <div className="ritual__text">
         <div className="num reveal">{num}</div>
-        <Entry {...entry} className="reveal d1" />
         <h2 className="title reveal d1">
           {title.map((l) => (
             <span className="line" key={l}>

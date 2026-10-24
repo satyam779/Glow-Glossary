@@ -46,11 +46,7 @@ export default function RitualsPage() {
         </div>
         <ul className="rt-tools">
           {tools.map((t, i) => (
-            <li key={t.term} className={`rt-tool reveal d${i + 1}`}>
-              <span className="rt-tool__kanji" lang="ja">
-                {t.jp}
-              </span>
-              <span className="rt-tool__term">{t.term}</span>
+            <li key={t.title} className={`rt-tool reveal d${i + 1}`}>
               <h3>{t.title}</h3>
               <p>{t.text}</p>
             </li>

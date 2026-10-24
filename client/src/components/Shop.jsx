@@ -3,14 +3,13 @@ import { PROMO, SHOP, WHATSAPP } from '../content';
 import { useCart } from '../context/CartContext';
 import { inr, savingsPercent } from '../lib/format';
 import { useProducts } from '../lib/products';
-import Entry from './Entry';
 import { Arrow, Chevron, LeafBullet, Star } from './Icons';
 import TinSlot from './TinSlot';
 
 // Home-page shop section: the featured tin (with the 3D tin beside it), the banner and the range,
 // all priced from the live catalogue.
 export default function Shop() {
-  const { num, entry, title, featuredSlug, featuredPoints, rating, cta, secondary, banner, rangeTitle, all } = SHOP;
+  const { num, title, featuredSlug, featuredPoints, rating, cta, secondary, banner, rangeTitle, all } = SHOP;
   const { data: products } = useProducts();
   const { add, setOpen } = useCart();
   const featured = products?.find((p) => p.slug === featuredSlug) || products?.find((p) => p.isFeatured) || products?.[0];
@@ -28,7 +27,6 @@ export default function Shop() {
       <div className="shop__top">
         <div className="shop__text">
           <div className="num reveal">{num}</div>
-          <Entry {...entry} className="reveal d1" />
           <h2 className="title reveal d1">
             {title.map((l) => (
               <span className="line" key={l}>

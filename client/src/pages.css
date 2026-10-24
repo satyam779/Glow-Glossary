@@ -229,6 +229,9 @@
   letter-spacing: -0.06em;
   color: var(--num);
 }
+.os-chapter__num + h2 {
+  margin-top: clamp(20px, 2.4vw, 32px);
+}
 .os-chapter__text h2 {
   font-size: clamp(30px, 3.2vw, 48px);
   font-weight: 700;
@@ -359,26 +362,8 @@
   overflow: hidden;
   box-shadow: 0 30px 60px -45px rgba(40, 60, 20, 0.5);
 }
-.rt-tool__kanji {
-  position: absolute;
-  right: 18px;
-  top: 10px;
-  font-family: var(--jp);
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 1;
-  color: #edf1e1;
-}
-.rt-tool__term {
-  position: relative;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 24px;
-  color: var(--matcha);
-}
 .rt-tool h3 {
   position: relative;
-  margin-top: 6px;
   font-size: 20px;
   font-weight: 700;
 }

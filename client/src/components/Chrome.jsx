@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
 import Logo from './Logo';
 import { Bag, Instagram, Mail } from './Icons';
-import { CONTACT_EMAIL, INSTAGRAM, NAV, ORIGIN, WHATSAPP } from '../content';
+import { CONTACT_EMAIL, INSTAGRAM, NAV, WHATSAPP } from '../content';
 import { useCart } from '../context/CartContext';
 
 export function Loader({ done }) {
@@ -117,16 +117,5 @@ export function Nav() {
         </button>
       </nav>
     </>
-  );
-}
-
-export function Badge() {
-  return (
-    <div className="badge" aria-hidden="true">
-      <Logo />
-      <span>
-        <b lang="ja">{ORIGIN.jp}</b> {ORIGIN.region} · {ORIGIN.lat}
-      </span>
-    </div>
   );
 }

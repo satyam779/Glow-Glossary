@@ -6,7 +6,7 @@ import TinSlot from './TinSlot';
 const external = (href) => (href.startsWith('http') && !href.includes('glowglossary.com') ? { target: '_blank', rel: 'noopener noreferrer' } : {});
 
 export default function Footer() {
-  const { title, cta, brand, tagline, hours, sign, columns, legal } = FOOTER;
+  const { title, cta, brand, tagline, hours, columns, legal } = FOOTER;
   return (
     <footer>
       <section className="foot" id="contact" data-theme="light">
@@ -29,10 +29,6 @@ export default function Footer() {
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             <span>{hours}</span>
           </div>
-          <p className="foot__sign reveal d1">
-            <b lang="ja">{sign.jp}</b>
-            {sign.text}
-          </p>
           <nav className="foot__cols reveal d2" aria-label="Footer">
             {columns.map((col, i) => (
               <div key={i}>

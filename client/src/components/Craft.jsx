@@ -1,18 +1,12 @@
 import { CRAFT } from '../content';
-import Entry from './Entry';
 import TinSlot from './TinSlot';
 
 export default function Craft() {
-  const { num, entry, title, copy, points, photo, kanji } = CRAFT;
+  const { num, title, copy, points, photo } = CRAFT;
   return (
     <section className="craft" id="craft" data-theme="dark">
-      <div className="craft__kanji" lang="ja" aria-hidden="true" data-speed="-0.15">
-        {kanji}
-      </div>
-
       <div className="craft__text">
         <div className="num reveal">{num}</div>
-        <Entry {...entry} className="reveal d1" />
         <h2 className="title reveal d1">
           {title.map((l) => (
             <span className="line" key={l}>

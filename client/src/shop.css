@@ -222,13 +222,6 @@ body.inner {
   color: var(--ink);
   letter-spacing: -0.02em;
 }
-.state__kanji {
-  font-family: var(--jp);
-  font-weight: 700;
-  font-size: 96px;
-  line-height: 1;
-  color: var(--num);
-}
 .banner-note {
   padding: 12px 16px;
   border-radius: 14px;

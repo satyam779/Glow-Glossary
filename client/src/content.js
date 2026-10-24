@@ -3,9 +3,9 @@
 // from glowglossary.com (checked 23 Oct 2026).
 
 // The store says the matcha comes from family farms in Shizuoka. (The new tin and box artwork
-// says Kagoshima; that's worth fixing on the packaging.) This drives the copy, the corner badge
-// and the label on the 3D tin.
-export const ORIGIN = { region: 'Shizuoka', jp: '静岡', lat: '35.0°N' };
+// says Kagoshima; that's worth fixing on the packaging.) This drives the copy and the label on
+// the 3D tin.
+export const ORIGIN = { region: 'Shizuoka' };
 
 export const STORE = 'https://glowglossary.com';
 export const CONTACT_EMAIL = 'contact@glowglossary.in';
@@ -24,17 +24,9 @@ export const NAV = {
   ],
 };
 
-export const TICKER = ['USDA & JAS Organic', 'Zero bitterness', 'No sugar', '5-minute ritual', 'Free shipping', PROMO.text];
-
 export const HERO = {
   lines: ['Shade-grown calm,', 'stone-ground'],
   accent: 'glow.',
-  entry: {
-    term: 'match·a',
-    phonetic: '/ˈmætʃə/',
-    kind: 'n.',
-    definition: 'Tea leaves grown in the shade, then stone-ground into a fine, bright green powder.',
-  },
   blurb: `Organic ceremonial grade A matcha from family farms in ${ORIGIN.region}, Japan. No bitterness, no 4pm crash.`,
   cta: 'Shop the tin',
 };
@@ -57,7 +49,6 @@ export const PRESS = {
 
 export const STORY = {
   num: '01',
-  entry: { jp: '一期一会', term: 'Ichi-go ichi-e', gloss: '“one time, one meeting”' },
   title: ['It began with', 'a friendship and', 'a cup of matcha'],
   copy:
     'Our founder, Pratishtha Rawat, was introduced to matcha by her Japanese friend Linh. For Linh it was a daily ritual of slowing down, not a trend. Years later, on her own wellness journey, Pratishtha went looking for clean, organic alternatives and brought that ritual home to India.',
@@ -71,7 +62,6 @@ export const STORY = {
 
 export const CRAFT = {
   num: '02',
-  entry: { jp: '石臼', term: 'Ishiusu', gloss: '“stone mill”' },
   title: ['Shade-grown.', 'Stone-ground.', 'Never bitter.'],
   copy:
     'Our leaves come from named, multi-generational family farms in Shizuoka, a region that has been perfecting tea for over 400 years. They are shaded for about three weeks, hand-picked at the first harvest and stone-ground in small batches. Just one ingredient: the whole leaf.',
@@ -81,7 +71,6 @@ export const CRAFT = {
     { k: 'Lab tested', v: 'Every batch, before it reaches you.' },
   ],
   photo: { src: '/images/farm.webp', alt: 'The Glow Glossary founders with their tea farmers in Japan', caption: 'With our growers' },
-  kanji: '抹茶',
 };
 
 export const COMPARE = {
@@ -101,7 +90,6 @@ export const COMPARE = {
 
 export const RITUAL = {
   num: '03',
-  entry: { jp: '茶筅', term: 'Chasen', gloss: '“bamboo whisk”' },
   title: ['Ready in', 'five minutes'],
   copy: 'No skill required. This is how we make ours.',
   steps: [
@@ -114,7 +102,6 @@ export const RITUAL = {
 
 export const SHOP = {
   num: '04',
-  entry: { jp: 'おもてなし', term: 'Omotenashi', gloss: '“wholehearted hospitality”' },
   title: ['Bring home', 'the glow'],
   // The featured product on the home page; name, price and photos come from the catalogue.
   featuredSlug: 'gg-matcha-green',
@@ -171,7 +158,6 @@ export const FOOTER = {
   brand: 'Glow Glossary',
   tagline: 'Wellness from India, matcha from Japan.',
   hours: 'Mon–Fri, 9am–5pm IST',
-  sign: { jp: '一服', text: 'Ippuku: take a pause, have a cup of tea.' },
   columns: [
     [
       { label: 'Shop all', href: '/shop' },
@@ -224,7 +210,6 @@ export const OUR_STORY = {
   chapters: [
     {
       num: '01',
-      entry: { jp: '産地', term: 'Sanchi', gloss: '“place of origin”' },
       title: 'How we source',
       body: [
         'Our matcha comes directly from organic, family-run farms in Shizuoka, Japan, where tea cultivation dates back centuries.',
@@ -234,7 +219,6 @@ export const OUR_STORY = {
     },
     {
       num: '02',
-      entry: { jp: '一味', term: 'Ichimi', gloss: '“a single flavour”' },
       title: 'What’s inside',
       body: [
         'Just one ingredient: 100% pure, organic, ceremonial-grade Japanese matcha. No fillers. No sweeteners. No preservatives.',
@@ -250,7 +234,6 @@ export const OUR_STORY = {
     },
     {
       num: '03',
-      entry: { jp: '仲間', term: 'Nakama', gloss: '“companions”' },
       title: 'Community building',
       body: [
         'Glow Glossary has always been more than a product. It’s a feeling, a lifestyle and, most of all, a community.',
@@ -267,9 +250,9 @@ export const RITUALS = {
   accent: 'no skill required.',
   lede: 'Matcha is the whole leaf, ground fine and whisked into water, so you drink all of it. Here’s everything you need to make a smooth, frothy, never-bitter cup at home.',
   tools: [
-    { jp: '茶筅', term: 'Chasen', title: 'Bamboo whisk', text: 'Its fine tines break up the powder and whip in air for a silky foam. Whisk in a zig-zag, not in circles.' },
-    { jp: '茶杓', term: 'Chashaku', title: 'Bamboo scoop', text: 'The traditional spoon for measuring out your matcha, a little at a time.' },
-    { jp: '茶碗', term: 'Chawan', title: 'Matcha bowl', text: 'A wide bowl leaves room to whisk properly and build a fine, even foam.' },
+    { title: 'Bamboo whisk', text: 'Its fine tines break up the powder and whip in air for a silky foam. Whisk in a zig-zag, not in circles.' },
+    { title: 'Bamboo scoop', text: 'The traditional spoon for measuring out your matcha, a little at a time.' },
+    { title: 'Matcha bowl', text: 'A wide bowl leaves room to whisk properly and build a fine, even foam.' },
   ],
   recipes: [
     {

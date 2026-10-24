@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-import Entry from '../components/Entry';
 import { LeafBullet } from '../components/Icons';
 import Press from '../components/Press';
 import { COMMUNITY, OUR_STORY } from '../content';
@@ -70,7 +69,6 @@ export default function OurStoryPage() {
             </figure>
             <div className="os-chapter__text">
               <span className="os-chapter__num reveal">{c.num}</span>
-              <Entry {...c.entry} className="reveal d1" />
               <h2 className="reveal d1">{c.title}</h2>
               {c.body.map((p, j) => (
                 <p key={j} className="reveal d2">

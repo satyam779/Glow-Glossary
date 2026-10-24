@@ -1,11 +1,10 @@
 import { Link } from 'react-router';
 import { STORY } from '../content';
 import { ArrowRight } from './Icons';
-import Entry from './Entry';
 import TinSlot from './TinSlot';
 
 export default function Story() {
-  const { num, entry, title, copy, photo, facts } = STORY;
+  const { num, title, copy, photo, facts } = STORY;
   return (
     <section className="story" id="story" data-theme="light">
       <figure className="photo story__photo reveal">
@@ -17,7 +16,6 @@ export default function Story() {
 
       <div className="story__text">
         <div className="num reveal">{num}</div>
-        <Entry {...entry} className="reveal d1" />
         <h2 className="title reveal d1">
           {title.map((l) => (
             <span className="line" key={l}>
