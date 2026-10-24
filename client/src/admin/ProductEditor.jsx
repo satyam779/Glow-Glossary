@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router';
 import { CATEGORIES } from '../../../shared/constants.js';
 import { inr, toPaise, toRupees } from '../lib/format';
 import { adminApi } from './adminApi';
-import ImageManager from './ImageManager';
+import ImageManager, { shrink } from './ImageManager';
 import { Loading, PageHead, Toggle, useToast } from './ui';
 
 const BLANK = {
@@ -145,12 +145,11 @@ export default function ProductEditor() {
     try {
       if (isNew) {
         const { product } = await adminApi('/products', { method: 'POST', body: payload });
-        if (pending.length) {
-          for (let i = 0; i < pending.length; i += 4) {
-            const fd = new FormData();
-            pending.slice(i, i + 4).forEach((p) => fd.append('images', p.file));
-            await adminApi(`/products/${product.id}/images`, { method: 'POST', body: fd });
-          }
+        // One photo per request, scaled down if needed, to fit serverless request limits.
+        for (const p of pending) {
+          const fd = new FormData();
+          fd.append('images', await shrink(p.file));
+          await adminApi(`/products/${product.id}/images`, { method: 'POST', body: fd });
         }
         setPending([]);
         setSaved(form);

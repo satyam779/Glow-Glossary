@@ -1,0 +1,28 @@
+# Backup keep-alive for the free Supabase project (paused after 7 idle days).
+# Vercel Cron already calls the endpoint daily; this runs every 3 days as a safety net.
+# Repo → Settings → Secrets and variables → Actions: add secret CRON_SECRET (same as Vercel),
+# and optionally variable SITE_URL if the site moves off glow-glossary.vercel.app.
+name: Supabase keep-alive
+
+on:
+  schedule:
+    - cron: '30 6 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping the keep-alive endpoint
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://glow-glossary.vercel.app' }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          for attempt in 1 2 3; do
+            code=$(curl -s -o response.json -w '%{http_code}' -H "Authorization: Bearer $CRON_SECRET" "$SITE_URL/api/cron/keepalive")
+            cat response.json; echo
+            [ "$code" = "200" ] && exit 0
+            echo "Attempt $attempt got HTTP $code, retrying in 30s"; sleep 30
+          done
+          exit 1

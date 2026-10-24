@@ -1,0 +1,157 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 30
+    }
+  },
+  "redirects": [
+    {
+      "source": "/pages/about-us",
+      "destination": "/our-story",
+      "permanent": true
+    },
+    {
+      "source": "/pages/contact",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/pages/faq",
+      "destination": "/rituals#faq",
+      "permanent": true
+    },
+    {
+      "source": "/pages/wholesale",
+      "destination": "/contact?topic=wholesale",
+      "permanent": true
+    },
+    {
+      "source": "/collections/all",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/collections/all-products",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/collections/matcha-kit",
+      "destination": "/shop?category=kits",
+      "permanent": true
+    },
+    {
+      "source": "/products/gg-matcha-copy",
+      "destination": "/shop/gg-matcha",
+      "permanent": true
+    },
+    {
+      "source": "/products/gg-matcha-green",
+      "destination": "/shop/gg-matcha-green",
+      "permanent": true
+    },
+    {
+      "source": "/products/matcha-kit",
+      "destination": "/shop/matcha-ritual-kit",
+      "permanent": true
+    },
+    {
+      "source": "/products/matcha-collagen",
+      "destination": "/shop/matcha-collagen",
+      "permanent": true
+    },
+    {
+      "source": "/products/the-collagen-ritual-set",
+      "destination": "/shop/collagen-ritual-kit",
+      "permanent": true
+    },
+    {
+      "source": "/products/matcha-duo",
+      "destination": "/shop/matcha-duo",
+      "permanent": true
+    },
+    {
+      "source": "/products/glow-on-the-go-1",
+      "destination": "/shop/glow-on-the-go",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/our-story",
+      "permanent": true
+    },
+    {
+      "source": "/ritual",
+      "destination": "/rituals",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://*.supabase.co; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/keepalive",
+      "schedule": "0 5 * * *"
+    }
+  ]
+}

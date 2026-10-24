@@ -4,9 +4,19 @@ import rateLimit from 'express-rate-limit';
 import { CATEGORY_VALUES } from '../../shared/constants.js';
 import { HttpError, parse, uuidParam } from '../lib/http.js';
 import { contactCreate, orderCreate, promoCode } from '../lib/schemas.js';
+import { config } from '../config.js';
 import { store } from '../store/index.js';
 
 export const publicRouter = Router();
+
+// Keep-alive: Vercel Cron (daily) and a GitHub Action (every 3 days) call this so the
+// free Supabase project never sits idle long enough to be paused.
+publicRouter.get('/cron/keepalive', async (req, res) => {
+  if (config.cronSecret && req.get('authorization') !== `Bearer ${config.cronSecret}`) throw new HttpError(401, 'Unauthorized.');
+  const started = Date.now();
+  await store.ping();
+  res.set('Cache-Control', 'no-store').json({ ok: true, mode: store.mode, ms: Date.now() - started, at: new Date().toISOString() });
+});
 
 const limiter = (limit, windowMinutes = 15, options = {}) =>
   rateLimit({ windowMs: windowMinutes * 60 * 1000, limit, standardHeaders: 'draft-8', legacyHeaders: false, ...options });

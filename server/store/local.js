@@ -54,6 +54,10 @@ const sortProducts = (a, b) => a.sortOrder - b.sortOrder || a.createdAt.localeCo
 export const localStore = {
   mode: 'local',
 
+  async ping() {
+    await load();
+  },
+
   async listProducts({ includeInactive = false, category, featured } = {}) {
     await load();
     return db.products

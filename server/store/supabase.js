@@ -128,6 +128,12 @@ function orderError(error) {
 export const supabaseStore = {
   mode: 'supabase',
 
+  // One tiny real query, so Supabase counts the project as active (free projects pause after 7 idle days).
+  async ping() {
+    const { error } = await sb.from('products').select('id', { head: true, count: 'exact' }).limit(1);
+    if (error) throw new HttpError(503, `Database unavailable: ${error.message}`);
+  },
+
   async listProducts({ includeInactive = false, category, featured } = {}) {
     let q = sb
       .from('products')

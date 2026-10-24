@@ -70,6 +70,15 @@ On the host:
 - Use Supabase in production. Local mode keeps data on the server's disk, which many hosts wipe on every deploy.
 - Point your domain at the app and make sure it's served over HTTPS (cookies are `Secure` in production).
 
+### Vercel
+
+`vercel.json` and `api/index.js` are already set up: Vercel serves the built site from `dist/` and runs the Express API as one serverless function at `/api/*`. Every other path loads the React app, so `/admin` and the 404 page work. Old Shopify URLs get permanent redirects.
+
+1. Vercel → Project → Settings → Environment Variables: add `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_BUCKET`, `SESSION_SECRET` and `ADMIN_EMAILS` (same values as `.env`). Without them the API can't start.
+2. Push to GitHub; Vercel builds with `npm run build`.
+
+Vercel limits each upload request to about 4.5 MB, so the admin uploads photos one at a time and shrinks large ones in the browser first.
+
 ## Everyday admin
 
 | Task | Where |

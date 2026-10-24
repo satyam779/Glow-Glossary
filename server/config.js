@@ -49,6 +49,8 @@ export const config = {
   },
   // Extra origins allowed to send admin requests (comma-separated), e.g. a separate admin domain.
   allowedOrigins: list(env.ALLOWED_ORIGINS),
+  // Vercel sends this as a Bearer token on cron calls; when set, the keep-alive endpoint requires it.
+  cronSecret: env.CRON_SECRET?.trim() || '',
   paths: {
     dist: path.join(root, 'dist'),
     // Local mode only. Kept outside server/ so the dev watcher doesn't restart on every write.

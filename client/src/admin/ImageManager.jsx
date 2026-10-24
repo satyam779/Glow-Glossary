@@ -5,6 +5,24 @@ import { useToast } from './ui';
 
 const ACCEPT = 'image/jpeg,image/png,image/webp,image/avif,image/gif';
 const MAX_BYTES = 12 * 1024 * 1024;
+const UPLOAD_BYTES = 3.5 * 1024 * 1024;
+
+// Scales large photos down in the browser so each upload fits the host's request limit.
+// The server still resizes everything to 1600 px WebP, so nothing visible is lost.
+export async function shrink(file) {
+  if (file.size <= UPLOAD_BYTES || file.type === 'image/gif') return file;
+  const bitmap = await createImageBitmap(file);
+  const scale = Math.min(1, 2400 / Math.max(bitmap.width, bitmap.height));
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.round(bitmap.width * scale);
+  canvas.height = Math.round(bitmap.height * scale);
+  canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+  bitmap.close();
+  const encode = (type, q) => new Promise((resolve) => canvas.toBlob(resolve, type, q));
+  let blob = await encode('image/webp', 0.9); // keeps transparency
+  if (!blob || blob.type !== 'image/webp') blob = await encode('image/jpeg', 0.88); // Safari can't encode WebP
+  return new File([blob], `${file.name.replace(/\.\w+$/, '')}.${blob.type === 'image/webp' ? 'webp' : 'jpg'}`, { type: blob.type });
+}
 
 // Photos for one product. With a productId, changes save immediately.
 // Without one (a product that hasn't been created yet), files are queued in `pending`.
@@ -48,11 +66,11 @@ export default function ImageManager({ productId, images, onChange, pending, onP
   const upload = async (files) => {
     setUploading((n) => n + files.length);
     try {
-      // Upload in small batches so one huge selection doesn't time out.
+      // One photo per request: serverless hosts (Vercel) cap request bodies at about 4.5 MB.
       let added = [];
-      for (let i = 0; i < files.length; i += 4) {
+      for (const file of files) {
         const fd = new FormData();
-        files.slice(i, i + 4).forEach((f) => fd.append('images', f));
+        fd.append('images', await shrink(file));
         const res = await adminApi(`/products/${productId}/images`, { method: 'POST', body: fd });
         added = added.concat(res.images);
         onChange((current) => [...current, ...res.images]);
